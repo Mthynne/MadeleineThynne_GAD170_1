@@ -342,3 +342,4 @@ Received Import Request.
 Start importing Assets/XPSystem.cs using Guid(8d65b133154e2364894838e1de1e39a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '29092d1267c4712ffe048a25bf96dc93') in 0.004581 seconds
   Import took 0.006719 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
