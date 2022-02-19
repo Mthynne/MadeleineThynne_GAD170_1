@@ -6,14 +6,14 @@ public class XPSystem : MonoBehaviour
 {
     public int level; //laps variable
 
-    public float curXP; //curLapProgress
-    public float reqXP; //reqLapProgress
+    public float curXP = 0.0f; //curLapProgress
+    public float reqXP = 100.0f; //req lap progress
 
-    //stats variables (to be tracked and modified upon level up
-    public float health;
-    public float defense;
-    public float speed;
-    public float attack; 
+    //stats variables (to be tracked and modified upon level up)
+    public float health = 25.0f;
+    public float defense = 20.0f;
+    public float speed = 10.0f;
+    public float attack = 20.0f;
 
 
     // Start is called before the first frame update
@@ -25,6 +25,24 @@ public class XPSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // check how much health we have
+        // if we have more than zero health, continue
+        if (health > 0)
+        {
+            //continue
+        }
+        else
+        {
+            //we don't have health
+            Debug.Log("We don't have anymore health!");
+        }
+        //if our current xp is equal to or higher than the required xp
+        if (curXP >= reqXP)
+        {
+            // if it is, increase level count and reset current progress
+            level++; //increase level by 1
+            curXP = 0; //reset the xp
+        }
         
     }
 
@@ -43,14 +61,15 @@ public class XPSystem : MonoBehaviour
         //increase our current xp
     }
 
-    public void LevelUp() //Completed alp
+    public void LevelUp() //Completed lap
     {
         //increase our level
+
     }
 
 
-    public void IncreaseStats() 
+    public void IncreaseStats()
     {
-        //Improve our stats
+        //increase stats
     }
 }
