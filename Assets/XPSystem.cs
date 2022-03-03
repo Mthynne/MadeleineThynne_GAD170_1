@@ -5,7 +5,7 @@ using UnityEngine;
 public class XPSystem : MonoBehaviour
 {
     public int level; //laps variable
-
+    public int incxp; //increase xp
     public float curXP = 0.0f; //curLapProgress
     public float reqXP = 100.0f; //req lap progress
 
@@ -25,11 +25,20 @@ public class XPSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        {
+            //An interaction called by a button press
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                Interaction();
+            }
+        }
         // check how much health we have
         // if we have more than zero health, continue
         if (health > 0)
         {
             //continue
+            health += 5; //increase by 1
+            level--;
         }
         else
         {
@@ -43,33 +52,64 @@ public class XPSystem : MonoBehaviour
             level++; //increase level by 1
             curXP = 0; //reset the xp
         }
-        
+        Debug.Log("Current health: " + health);
+        Debug.Log("Completed Level: " + level);
     }
 
     public void InitialStats()
     {
         //Initialised stats, level, xp, reqxp etc
-    }
+        health = 25.0f;
+        defense = 20.0f;
+        speed = 10.0f;
+        attack = 20.0f;
 
-    public void Interaction(int exp)
+        level = 0;
+        curXP = 0f;
+        reqXP = 100f;
+    }
+    public void Interaction()
     {
         //An interaction called by a button press
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            GainXP();
+        }
     }
 
-    public void GainXP(int amount) //GainProgress
+    public void GainXP(int incxp) //GainProgress
     {
         //increase our current xp
+        curXP += incxp;
+        Debug.Log("XP Gained: " + incxp);
+        Debug.Log("Current XP: " + curXP);
+
     }
 
     public void LevelUp() //Completed lap
     {
-        //increase our level
-
+        //update our level
+        level += 1;
+        //update curxp
+        curXP = 0f;
+        //update reqxp
+        reqXP *= 1.15f;
+        //update stats
+        health += 1;
+        defense += 1;
+        speed += 1;
+        attack += 1;
+        Debug.Log("Leveled up to level " + level);
+        Debug.Log("Stats all increased!");
     }
 
 
     public void IncreaseStats()
     {
         //increase stats
+        health += 2;
+        defense += 2;
+        speed += 2;
+        attack += 2;
     }
 }
