@@ -5,7 +5,7 @@ using UnityEngine;
 public class XPSystem : MonoBehaviour
 {
     public int level; //laps variable
-    public int incxp; //increase xp
+ 
     public float curXP = 0.0f; //curLapProgress
     public float reqXP = 100.0f; //req lap progress
 
@@ -14,7 +14,6 @@ public class XPSystem : MonoBehaviour
     public float defense = 20.0f;
     public float speed = 10.0f;
     public float attack = 20.0f;
-
 
     // Start is called before the first frame update
     void Start()
@@ -74,17 +73,19 @@ public class XPSystem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             GainXP();
+            Debug.Log("You have drunk a mystery potion! Stats all increased.");
         }
     }
 
-    public void GainXP(int incxp) //GainProgress
+    public void GainXP() //GainProgress
     {
         //increase our current xp
-        curXP += incxp;
-        Debug.Log("XP Gained: " + incxp);
+        curXP += level;
+        Debug.Log("XP Gained: " + level);
         Debug.Log("Current XP: " + curXP);
 
     }
+
 
     public void LevelUp() //Completed lap
     {
@@ -112,4 +113,10 @@ public class XPSystem : MonoBehaviour
         speed += 2;
         attack += 2;
     }
+
+
+
+
+
+
 }
